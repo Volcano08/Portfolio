@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex;
+            flex-direction: column; /* Arrange children vertically */
+            min-height: 100vh; /* Minimum height of viewport */
+            background-color: #333333;
+            color: white;
+        }
+
+        header {
+            background-image: url(../Images/Header-Background.jpg);
+            height: 100px;
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: space-between; /* Space items evenly */
+            align-items: center; /* Center content vertically */
+            padding: 0 20px; /* Add some padding to the sides */
+        }
+
+        .Logo {
+            width: 100px; /* Decrease logo width */
+            height: auto; /* Set height to auto for responsiveness */
+        }
+
+        .NavLinks {
+            display: flex;
+            align-items: center;
+        }
+
+        .NavLinks a {
+            text-decoration: none;
+            color: white;
+            margin: 0 5px; /* Adjust margin for spacing */
+            font-weight: bold; /* Make navigation links bold */
+        }
+
+        #OrgIMG, #CocoaIMG {
+            width: 150px;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        p {
+            color: red;
+            cursor: pointer; /* Add cursor pointer to indicate clickable */
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        footer {
+            color: red;
+            background-color: #222; /* Dark background for footer */
+            padding: 20px;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer-box {
+            border: 2px solid red; /* Add border around footer */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="NavLinks">
+            <a href="Projects.html">Projects</a>
+        </div>
+        <a class="NavLinks" href="../index.html">
+            <img class="Logo" src="../Images/Logo.jpg" alt="Logo Image">
+        </a>
+        <div class="NavLinks">
+            <a href="Resources.html">Resources</a> <!-- Add .html to Resources link -->
+        </div>
+    </header>
+    <div class="content">
+        <div class="CocoaCraze">
+            <h3>CocoaCraze Site</h3>
+            <img id="CocoaIMG" src="../Images/Cocoa.jpg" alt="CocoaIMG">
+            <p>This site is for a small chocolate selling business named CocoaCraze. It features a homepage, a menu, a recipe page, a chocolate pairing guide, and a page dedicated to chocolate holidays.</p>
+            <a href="https://volcano08.github.io/WIPCocoaCraze/">View Project</a>
+        </div>
+        <div class="Organize">
+            <h3>Student Organizer</h3>
+            <img id="OrgIMG" src="../Images/Organize.webp" alt="Organizer">
+            <p>Student Organizer is designed to help high school students stay organized. With features like a calendar, calculator, financial helper, and even a game of Snake, it offers a wide range of tools to assist students in managing their academic and personal lives effectively.</p>
+            <a href="https://volcano08.github.io/Student-Organizer/Student%20Organizer.html">View Project</a>
+        </div>
+    </div>
+    <footer class="footer-box">
+        <div>&copy; 2024 CodeCanvas. All rights reserved.</div>
+    </footer>
+</body>
+</html>
