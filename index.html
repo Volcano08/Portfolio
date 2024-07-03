@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <meta name="description" content="CodeCanvas - Front-end Developer Portfolio showcasing engaging digital experiences created with HTML, CSS, and JavaScript.">
+    <meta name="keywords" content="front-end development, HTML, CSS, JavaScript, web design, portfolio">
+    <meta name="author" content="CodeCanvas">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #ffcc00;
+            --secondary-color: #1e1e1e;
+            --accent-color: #ff9900;
+            --text-color: #f5f5f5;
+            --background-color: #1e1e1e;
+            --light-background: #ffffff;
+            --light-text: #000000;
+            --font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-image: url('Images/Header-Background.jpg');
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--primary-color);
+            outline: none;
+            transform: scale(1.1);
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .mode-toggle {
+            position: absolute;
+            right: 20px;
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mode-toggle:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .about-us h3,
+        .contact-info h3,
+        .learn h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-us p,
+        .contact-info p,
+        .learn p {
+            text-indent: 30px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-info p,
+        .contact-info a {
+            cursor: pointer;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+
+        .contact-info .email,
+        .contact-info .phone-number {
+            position: relative;
+        }
+
+        .contact-info .tooltip {
+            visibility: hidden;
+            background-color: var(--text-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -60px;
+            width: 120px;
+        }
+
+        .contact-info .email:hover .tooltip,
+        .contact-info .phone-number:hover .tooltip {
+            visibility: visible;
+        }
+
+        .learn img {
+            width: 100px;
+            margin: 0 10px 10px 0;
+            transition: transform 0.3s;
+        }
+
+        .learn img:hover {
+            transform: scale(1.1);
+        }
+
+        .learn a {
+            text-decoration: none;
+        }
+
+        .learn .css-img,
+        .learn .script-img {
+            width: 160px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+
+            .section {
+                padding: 20px 10px;
+            }
+
+            .learn img {
+                width: 80px;
+            }
+
+            .learn .css-img,
+            .learn .script-img {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-links">
+            <a href="Sites/Projects.html" aria-label="Projects Page">Projects</a>
+            <a href="Sites/FAQ.html" aria-label="FAQ Page">FAQ</a>
+        </nav>
+        <a class="logo-link" href="index.html" aria-label="Home Page">
+            <img class="logo" src="Images/Logo.jpg" alt="Logo Image">
+        </a>
+        <button class="mode-toggle" aria-label="Toggle dark/light mode">Toggle Dark/Light Mode</button>
+    </header>
+    <main>
+        <section class="about-us section">
+            <h3>About Us</h3>
+            <p>We, as front-end developers, love turning designs into engaging digital experiences. We infuse each project
+                with creativity and technical knowledge, leveraging HTML, CSS, JavaScript, and other technologies. Our focus
+                is not just on looks, but on creating user interfaces that are easy to navigate and enjoyable to use. We
+                continuously learn new design trends and technologies. From ideation to the final product, we are committed
+                to delivering great-looking and functional websites and apps.</p>
+            <p>Front-end development is where art meets technology. We create inherently spellbinding user interfaces with
+                intuitive engagement through our mastery of HTML, CSS, and JavaScript. It's about how it looks and feels.
+                Curious about new trends and technologies, we never stop learning and improving our skills. Whether it's
+                creating responsive layouts or improving accessibility, every project is done with commitment and a drive
+                toward excellence.</p>
+            <p>Front-end development empowers us to build ideas and create a small part of a digital view. Our passion for
+                innovation and focus on users push us to evolve in this ever-changing field. We get excited about every
+                project, feeling the impact of our work on both users and businesses. We will continue improving our skills,
+                embracing new challenges, and making meaningful contributions to front-end development in the future.</p>
+        </section>
+        <section class="contact-info section">
+            <h3>Contact Us</h3>
+            <p class="email">Email: <span id="email-text">CodeCanvas@outlook.com</span>
+                <span class="tooltip">Click to copy</span>
+            </p>
+            <a href="https://discord.gg/qXSDvsjDrr" class="discord-link" aria-label="Join our Discord Community">Join our Discord Community</a>
+            <p class="phone-number">Phone Number: <span id="phone-text">(415) 555-6789</span>
+                <span class="tooltip">Click to copy</span>
+            </p>
+        </section>
+        <section class="learn section">
+            <h3>Learn More</h3>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" aria-label="Learn HTML">
+                <img class="html-img" src="Images/HTML (2).png" alt="HTML">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics" aria-label="Learn CSS">
+                <img class="css-img" src="Images/CSS (2).png" alt="CSS">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics" aria-label="Learn JavaScript">
+                <img class="script-img" src="Images/Javascript (2).png" alt="JavaScript">
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CodeCanvas. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Sites/PrivacyPolicy.html">Privacy Policy</a>
+            <a href="Sites/TermsOfService.html">Terms of Service</a>
+        </div>
+    </footer>
+    <button id="scrollToTopBtn" aria-label="Scroll to top">↑</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailElement = document.querySelector('.email');
+            const phoneElement = document.querySelector('.phone-number');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const modeToggle = document.querySelector('.mode-toggle');
+
+            emailElement.addEventListener('click', function () {
+                const email = document.getElementById('email-text').textContent;
+                navigator.clipboard.writeText(email).then(function () {
+                    alert('Email copied to clipboard: ' + email);
+                }).catch(function (err) {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            phoneElement.addEventListener('click', function () {
+                const phoneNumber = document.getElementById('phone-text').textContent;
+                navigator.clipboard.writeText(phoneNumber).then(function () {
+                    alert('Phone number copied to clipboard: ' + phoneNumber);
+                }).catch(function (err) {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            modeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('light-mode');
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.style.backgroundColor = 'var(--light-background)';
+                    document.body.style.color = 'var(--light-text)';
+                } else {
+                    document.body.style.backgroundColor = 'var(--background-color)';
+                    document.body.style.color = 'var(--text-color)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
