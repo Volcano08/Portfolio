@@ -5,110 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <style>
-        header {
-            background-image: url(Images/Header-Background.jpg);
-            height: 100px;
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            justify-content: space-between; /* Space items evenly */
-            align-items: center; /* Center content vertically */
-            padding: 0 20px; /* Add some padding to the sides */
-        }
-        .Logo {
-            width: 100px; /* Decrease logo width */
-            height: auto; /* Set height to auto for responsiveness */
-        }
-        .NavLinks {
-            display: flex;
-            align-items: center;
-        }
-        .NavLinks a {
-            text-decoration: none;
-            color: white;
-            margin: 0 5px; /* Adjust margin for spacing */
-            font-weight: bold; /* Make navigation links bold */
-        }
-        .Paragraph1, .Paragraph2, .Paragraph3 {
-            text-indent: 30px;
-        }
         body {
             background-color: #333333;
             color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-        h3 {
+        header {
+            background-image: url(Images/Header-Background.jpg);
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        .about-us, .contact-info, .learn {
+            padding: 20px;
+        }
+        .about-us p, .contact-info p, .learn p {
+            text-indent: 30px;
+            margin: 0 0 10px;
+        }
+        .about-us h3, .contact-info h3, .learn h3 {
             color: white;
         }
-        p {
-            color: red;
-            cursor: pointer; /* Add cursor pointer to indicate clickable */
+        .contact-info p {
+            cursor: pointer;
         }
-        .HTMLIMG,.CSSIMG,.ScriptIMG {
+        .learn img {
             width: 100px;
+            margin: 0 10px 10px 0;
         }
-        .CSSIMG,.ScriptIMG {
+        .learn .css-img, .learn .script-img {
             width: 160px;
         }
-        .HTMl,.CSS,.Javascript {
-            margin: left -99999999999px;
-        }
-        .Learn a {
-            color:#333333
-        }
         footer {
-            background-color: #222; /* Dark background for footer */
+            background-color: #222;
             color: red;
             padding: 20px;
             text-align: center;
-            position: fixed; /* Fixed positioning */
-            bottom: 0; /* Positioned at the bottom */
-            width: 100%; /* Take full width */
-            box-sizing: border-box; /* Include padding in width */
-            border-top: 2px solid red; /* Add border on top */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+            border-top: 2px solid red;
+        }
+        .discord-link {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .discord-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="NavLinks">
+        <div class="nav-links">
             <a href="Sites/Projects.html">Projects</a>
         </div>
-        <a class="NavLinks" href="index.html">
-            <img class="Logo" src="Images/Logo.jpg" alt="Logo Image">
+        <a class="nav-links" href="index.html">
+            <img class="logo" src="Images/Logo.jpg" alt="Logo Image">
         </a>
-        <div class="NavLinks">
-            <a href="Sites/Resources.html">Resources</a> <!-- Add .html to Resources link -->
+        <div class="nav-links">
+            <a href="Sites/Resources.html">Resources</a>
         </div>
     </header>
-    <div class="AboutUs">
+    <div class="about-us">
         <h3>About Us</h3>
-        <p class="Paragraph1">As front-end developers, we are passionate about turning designs into captivating digital experiences. With a strong background in coding languages like HTML, CSS, and JavaScript, we bring creativity and technical skills to every project. Our focus goes beyond just looks; we aim to optimize user interfaces for smooth navigation and excellent user engagement. Drawing on our knowledge of design principles and emerging technologies, we constantly push the boundaries of what's possible in front-end development. From the initial idea to the final product, we are committed to delivering visually appealing and user-friendly websites and apps that make a lasting impression.</p>
-        <p class="Paragraph2">In the heart of front-end development, we find a blend of artistry and technical skill. We navigate this realm with enthusiasm and precision. Our expertise in HTML, CSS, and JavaScript forms the foundation of our work, enabling us to create visually appealing interfaces that captivate and engage users. Beyond aesthetics, we prioritize usability, ensuring that every interaction is intuitive and seamless. With an unwavering curiosity for emerging trends and technologies, we continually refine our skills, pushing the boundaries of what's achievable in web design. Whether it's crafting responsive layouts or enhancing accessibility, we approach each project with dedication and a relentless pursuit of excellence.</p>
-        <p class="Paragraph3">As front-end developers, we feel privileged to bring ideas to life and shape the digital landscape. Our passion for innovation and user-focused design drives us to constantly evolve and adapt in this ever-changing field. Each project inspires us, as we see the impact our work has on users and businesses. Moving forward, we are eager to continue refining our skills, embracing new challenges, and making meaningful contributions to front-end development. Together, let's build a future where technology enhances human experiences and empowers connections.</p>
+        <p>We, as front-end developers, just love turning designs into engaging digital experiences. We infuse each project with huge amounts of creativity and technical knowledge, standing on the back of in-depth knowledge of HTML, CSS, JavaScript, among other development technologies. For us, it is not just the looks, but about user interfaces that are easy to navigate and fun to use. Keeping learning new design trends and tech. From the ideation of thoughts to the final product, we are committed to delivering great looking and working websites and apps.</p>
+        <p>Front-end development is where art meets tech and vice versa. Inherently spellbinding user interfaces are created with intuitive engagement through our mastery of HTML, CSS, and JavaScript. It's about not just how it looks; we take care of the feel too. Curious about new trends and technologies, we never stop learning and improving our skills. It could be to create responsive layouts or improve accessibility; every project is done not just with commitment but a drive toward excellence.</p>
+        <p>It empowers us front-end developers to build ideas and create a small part of a digital view. The passion for innovation and focus on users pushes us to evolve in this ever-changing field. We get excited by every project: we feel the impact that one's work has on both users and business. In the future, we will be eager to continue improving our skills, embracing new challenges, and make meaningful contributions to front-end development.</p>
     </div>
-    <div class="ContactInfo">
+    <div class="contact-info">
         <h3>Contact Us</h3>
-        <p class="Email">Email: CodeCanvas@outlook.com</p>
-        <p class="PhoneNumber">Phone Number: (415) 555-6789</p>
+        <p class="email">Email: CodeCanvas@outlook.com</p>
+        <p class="phone-number">Phone Number: (415) 555-6789</p>
     </div>
-    <div class="Learn">
+    <div class="learn">
         <h3>Learn More</h3>
-        <a class="HTML" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">
-            <img class="HTMLIMG" src="Images/HTML (2).png" alt="HTML">
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">
+            <img class="html-img" src="Images/HTML (2).png" alt="HTML">
         </a>
-        <a class="CSS" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics">
-            <img class="CSSIMG" src="Images/CSS (2).png" alt="CSS">
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics">
+            <img class="css-img" src="Images/CSS (2).png" alt="CSS">
         </a>
-        <a class="JavaScript" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics">
-            <img class="ScriptIMG" src="Images/Javascript (2).png" alt="JavaScript">
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics">
+            <img class="script-img" src="Images/Javascript (2).png" alt="JavaScript">
         </a>
     </div>
+    <div class="discord-link">
+        <a href="https://discord.gg/qXSDvsjDrr">Join our Discord Community</a>
+    </div>
+    <footer>
+        Copyright © 2024 CodeCanvas. All rights reserved.
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Function to copy email to clipboard
-            document.querySelector('.Email').addEventListener('click', function () {
+            document.querySelector('.email').addEventListener('click', function () {
                 const email = this.textContent.split(': ')[1];
                 navigator.clipboard.writeText(email).then(function () {
                     alert('Email copied to clipboard: ' + email);
@@ -117,12 +131,10 @@
                 });
             });
 
-            // Function to navigate to PhoneCall.html when clicking phone number
-            document.querySelector('.PhoneNumber').addEventListener('click', function () {
+            document.querySelector('.phone-number').addEventListener('click', function () {
                 window.location.href = 'Sites/PhoneCall.html';
             });
         });
     </script>
-<footer>Copyright © 2024 CodeCanvas. All rights reserved.</footer>
 </body>
 </html>
