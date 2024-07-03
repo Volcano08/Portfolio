@@ -46,8 +46,19 @@
         .about-us h3, .contact-info h3, .learn h3 {
             color: white;
         }
-        .contact-info p {
+        .contact-info p, .contact-info a {
             cursor: pointer;
+            margin: 10px 0;
+            display: block;
+        }
+        .contact-info a {
+            color: #ffcc00;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            color: #ff9900;
         }
         .learn img {
             width: 100px;
@@ -66,15 +77,6 @@
             width: 100%;
             box-sizing: border-box;
             border-top: 2px solid red;
-        }
-        .discord-link {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .discord-link a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -99,9 +101,7 @@
     <div class="contact-info">
         <h3>Contact Us</h3>
         <p class="email">Email: CodeCanvas@outlook.com</p>
-        <div class="discord-link">
-            <a href="https://discord.gg/qXSDvsjDrr">Join our Discord Community</a>
-        </div>
+        <a href="https://discord.gg/qXSDvsjDrr" class="discord-link">Join our Discord Community</a>
         <p class="phone-number">Phone Number: (415) 555-6789</p>
     </div>
     <div class="learn">
