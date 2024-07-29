@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCanvas Portfolio</title>
+    <meta name="description" content="CodeCanvas - Front-end Developer Portfolio showcasing engaging digital experiences created with HTML, CSS, and JavaScript.">
+    <meta name="keywords" content="front-end development, HTML, CSS, JavaScript, web design, portfolio">
+    <meta name="author" content="CodeCanvas">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #00bcd4; /* Cyan */
+            --secondary-color: #263238; /* Dark blue-gray */
+            --accent-color: #ff4081; /* Neon pink */
+            --text-color: #eceff1; /* Light text color */
+            --background-color: #1e1e1e; /* Dark background */
+            --code-bg: #282c34; /* Code editor background */
+            --code-text: #abb2bf; /* Code text color */
+            --code-comment: #5c6370; /* Code comment color */
+            --code-keyword: #c678dd; /* Code keyword color */
+            --code-string: #98c379; /* Code string color */
+            --code-variable: #e06c75; /* Code variable color */
+            --code-function: #61afef; /* Code function color */
+            --light-background: #f5f5f5; /* Light background */
+            --light-text: #000000; /* Dark text color */
+            --font-family: 'Roboto', sans-serif;
+            --code-font: 'Courier New', Courier, monospace; /* Monospaced font for code */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links.left-nav,
+        .nav-links.right-nav {
+            flex: 1;
+            justify-content: flex-start;
+        }
+
+        .nav-links.right-nav {
+            justify-content: flex-end;
+        }
+
+        .logo-link {
+            flex: 0 0 auto;
+            margin: 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 0 200px; /* Adjusted margin */
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--primary-color);
+            outline: none;
+            transform: scale(1.1);
+        }
+
+        .mode-toggle {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mode-toggle:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .about-us h3,
+        .contact-info h3,
+        .learn h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-us p,
+        .contact-info p,
+        .learn p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-us .code-block {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--code-text);
+            font-family: var(--code-font);
+            overflow-x: auto;
+        }
+
+        .about-us .run-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative; /* Ensure the tooltip is positioned relative to the button */
+        }
+
+        .run-button .tooltip {
+            visibility: hidden; /* Initially hide the tooltip */
+            background-color: var(--text-color); /* Tooltip background color */
+            color: var(--background-color); /* Tooltip text color */
+            text-align: center; /* Center the text */
+            padding: 5px; /* Padding for the tooltip */
+            border-radius: 5px; /* Rounded corners for the tooltip */
+            position: absolute; /* Absolute positioning */
+            z-index: 1; /* Ensure it appears above other elements */
+            bottom: 100%; /* Position it above the button */
+            left: 50%; /* Center it horizontally */
+            margin-left: -50px; /* Adjust to properly center the tooltip */
+            width: 100px; /* Fixed width for the tooltip */
+        }
+
+        .run-button:hover .tooltip {
+            visibility: visible; /* Show the tooltip when hovering over the button */
+        }
+
+        .terminal {
+            display: none;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: var(--code-font);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .terminal .prompt {
+            color: var(--primary-color);
+        }
+
+        .about-text {
+            display: none;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-info p,
+        .contact-info a {
+            cursor: pointer;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover,
+        .contact-info a:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+
+        .contact-info .email,
+        .contact-info .phone-number {
+            position: relative;
+        }
+
+        .contact-info .tooltip {
+            visibility: hidden;
+            background-color: var(--text-color);
+            color: var(--background-color);
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -60px;
+            width: 120px;
+        }
+
+        .contact-info .email:hover .tooltip,
+        .contact-info .phone-number:hover .tooltip {
+            visibility: visible;
+        }
+
+        .learn img {
+            width: 100px;
+            margin: 0 10px 10px 0;
+            transition: transform 0.3s;
+        }
+
+        .learn img:hover {
+            transform: scale(1.1);
+        }
+
+        .learn a {
+            text-decoration: none;
+        }
+
+        .learn .css-img,
+        .learn .script-img {
+            width: 160px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 20px 10px;
+            }
+
+            .learn img {
+                width: 80px;
+            }
+
+            .learn .css-img,
+            .learn .script-img {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-links left-nav">
+            <a href="Sites/Projects.html" aria-label="Projects Page">Projects</a>
+        </nav>
+        <a class="logo-link" href="index.html" aria-label="Home Page">
+            <img class="logo" src="Images/Logo.jpg" alt="Digital Theme Logo">
+        </a>
+        <nav class="nav-links right-nav">
+            <a href="Sites/FAQ.html" aria-label="FAQ Page">FAQ</a>
+        </nav>
+        <button class="mode-toggle" aria-label="Toggle dark/light mode">Toggle Dark/Light Mode</button>
+    </header>
+    <main>
+        <section class="about-us section">
+            <h3>About Us</h3>
+            <pre class="code-block"><code class="language-javascript">// Welcome to CodeCanvas
+class CodeCanvas {
+    constructor() {
+        // Creating stunning and interactive digital experiences
+        this.team = new Team();
+        this.technologies = ['HTML', 'CSS', 'JavaScript'];
+    }
+
+    build() {
+        // Transforming ideas into digital masterpieces
+        this.team.create('website');
+    }
+}
+</code></pre>
+            <button class="run-button" onclick="runCode()">Run Code
+                <span class="tooltip">Show About Us</span>
+            </button>
+            <div class="terminal" id="terminal">
+                <p class="prompt">> Running code...</p>
+                <p class="output" id="output"></p>
+            </div>
+            <div class="about-text" id="about-text">
+                <p>At CodeCanvas, we specialize in creating stunning and interactive digital experiences that captivate users and deliver results. Our team of seasoned front-end developers combines technical expertise with a deep understanding of user behavior to craft websites and applications that are not only visually appealing but also intuitive and functional.</p>
+                <p>We leverage the latest technologies in HTML, CSS, and JavaScript to bring your vision to life. Our design philosophy is rooted in simplicity and elegance, ensuring that each project is not only aesthetically pleasing but also delivers a seamless user experience across all devices.</p>
+                <p>From responsive web design to advanced JavaScript applications, we handle projects of all sizes and complexities. We are committed to staying at the forefront of web development trends and best practices, continuously enhancing our skills to provide cutting-edge solutions for our clients.</p>
+                <p>At CodeCanvas, our mission is to transform ideas into digital masterpieces that engage and inspire. Let us help you build a digital presence that stands out and drives success.</p>
+            </div>
+        </section>
+        <section class="contact-info section">
+            <h3>Contact Us</h3>
+            <p class="email">Email: <span id="email-text">CodeCanvas@outlook.com</span>
+                <span class="tooltip">Click to copy</span>
+            </p>
+            <a href="https://discord.gg/qXSDvsjDrr" class="discord-link" aria-label="Join our Discord Community">Join our Discord Community</a>
+            <p class="phone-number">Phone Number: <span id="phone-text">(415) 555-6789</span>
+                <span class="tooltip">Click to copy</span>
+            </p>
+        </section>
+        <section class="learn section">
+            <h3>Learn More</h3>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics" aria-label="Learn HTML">
+                <img class="html-img" src="Images/HTML (2).png" alt="HTML">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics" aria-label="Learn CSS">
+                <img class="css-img" src="Images/CSS (2).png" alt="CSS">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics" aria-label="Learn JavaScript">
+                <img class="script-img" src="Images/Javascript (2).png" alt="JavaScript">
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CodeCanvas. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="Sites/privacypolicy.html">Privacy Policy</a>
+            <a href="Sites/TermsOfService.html">Terms of Service</a>
+        </div>
+    </footer>
+    <button id="scrollToTopBtn" aria-label="Scroll to top">↑</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailElement = document.querySelector('.email');
+            const phoneElement = document.querySelector('.phone-number');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const modeToggle = document.querySelector('.mode-toggle');
+
+            emailElement.addEventListener('click', function () {
+                const email = document.getElementById('email-text').textContent;
+                navigator.clipboard.writeText(email).then(function () {
+                    alert('Email copied to clipboard: ' + email);
+                }).catch(function (err) {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            phoneElement.addEventListener('click', function () {
+                const phoneNumber = document.getElementById('phone-text').textContent;
+                navigator.clipboard.writeText(phoneNumber).then(function () {
+                    alert('Phone number copied to clipboard: ' + phoneNumber);
+                }).catch(function (err) {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            modeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('light-mode');
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.style.backgroundColor = 'var(--light-background)';
+                    document.body.style.color = 'var(--light-text)';
+                } else {
+                    document.body.style.backgroundColor = 'var(--background-color)';
+                    document.body.style.color = 'var(--text-color)';
+                }
+            });
+        });
+
+        function runCode() {
+            const terminal = document.getElementById('terminal');
+            const output = document.getElementById('output');
+            const aboutText = document.getElementById('about-text');
+            terminal.style.display = 'block';
+
+            setTimeout(() => {
+                output.textContent = 'Code executed successfully. Displaying About Us...';
+                aboutText.style.display = 'block';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>
